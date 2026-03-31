@@ -23,4 +23,10 @@ public class TodoListController {
         tasks.add(task);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteTask(@PathVariable Long id) {
+        tasks.removeIf(task -> task.id().equals(id));
+        return ResponseEntity.noContent().build();
+    }
+
 }
